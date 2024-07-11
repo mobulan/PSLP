@@ -1,0 +1,6 @@
+dataset: 'cub'
+model_name: 'resnet18'
+queries: 15
+#num_classes: 100
+#model_path: 'pretrained/models/cub/softmax/resnet18'
+classifier: pslp

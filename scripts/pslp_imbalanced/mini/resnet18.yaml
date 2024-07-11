@@ -1,0 +1,9 @@
+dataset: 'mini'
+model_name: 'resnet18'
+queries: 15
+model_path: 'pretrained/models/mini/softmax/resnet18'
+classifier: pslp
+dirichlet: 2
+k_hop: 1
+alpha: 0.9
+update_rate: 0.2

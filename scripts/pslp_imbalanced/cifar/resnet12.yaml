@@ -1,0 +1,8 @@
+dataset: 'cifar'
+model_name: 'resnet12'
+queries: 15
+classifier: pslp
+dirichlet: 2
+k_hop: 1
+alpha: 0.9
+update_rate: 0.2

@@ -1,0 +1,6 @@
+dataset: 'tiered'
+model_name: 'resnet18'
+queries: 15
+num_classes: 351
+model_path: 'pretrained/models/tiered/softmax/resnet18'
+classifier: pslp

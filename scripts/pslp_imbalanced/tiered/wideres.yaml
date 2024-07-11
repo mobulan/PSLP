@@ -1,0 +1,8 @@
+dataset: 'tiered'
+model_name: 'wideres28'
+queries: 15
+classifier: pslp
+dirichlet: 2
+k_hop: 1
+alpha: 0.9
+update_rate: 0.2
