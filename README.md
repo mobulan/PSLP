@@ -4,7 +4,7 @@ Source code of "Robust Transductive Few-shot Learning via Joint Message Passing 
 
 ## Quick Start
 
-1. Download pretrained.zip and unzip it to get the pretrained folder, put it in the root directory, and put it on the same level as other folders
+1. Download [pretrained.zip](https://drive.google.com/file/d/1jDKqG2A3mgv01LZmVC_BFIq_2JvkVSC6/view?usp=sharing)  and unzip it to get the pretrained folder, put it in the root directory, and put it on the same level as other folders
 3. Modify the script folder name of `exp_scripts` in `main()` in main.py and select the appropriate script list
 4. Right-click pycharm to run `main.py` or execute `python3 main.py`
 5. The experimental results are saved in `/output/{exp_name}/{log_name}.log`
