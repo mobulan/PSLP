@@ -62,7 +62,7 @@ class SoftLabelPropagation(nn.Module):
 
 		for i in warp_tqdm(range(int(self.epochs)), not self.terminal):
 			# Build Graph
-			# Get Y in the Algorithm
+			# Get Z in the Algorithm
 			Z = self.get_prob(features, self.proto,True)
 
 			# Soft Lable Propagation
@@ -70,6 +70,7 @@ class SoftLabelPropagation(nn.Module):
 
 			# Normalize(if imbalance, we only use Z=Z/Z.sum(-1)）
 			Z = compute_optimal_transport(Z, self.ns, self.ys, 1e-3, self.balance)
+
 			# update Prototype
 			self.update_prototype(Z, features, self.update_rate)
 
@@ -150,6 +151,7 @@ def compute_optimal_transport(M, n_lsamples, labels, epsilon=1e-6,class_balance=
 			break
 		iters = iters + 1
 	return P
+
 def keep_top_k_row(matrix, k):
 	batch_size, num_nodes, _ = matrix.shape
 	values, indices = torch.topk(matrix, k, dim=-1)
