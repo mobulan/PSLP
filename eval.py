@@ -9,7 +9,6 @@ from utils import Tasks
 from utils import load_pickle
 from utils import compute_confidence_interval
 
-
 class Evaluator:
 	def __init__(self, config, device):
 		self.config = config

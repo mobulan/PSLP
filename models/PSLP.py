@@ -1,14 +1,5 @@
-import math
-import os
-import time
-import numpy as np
 import torch
-from matplotlib import pyplot as plt
-from sklearn.manifold import TSNE
-from sklearn.metrics import confusion_matrix
 from torch import nn
-from tqdm import tqdm
-import torch.nn.functional as F
 from utils import warp_tqdm
 
 
@@ -132,24 +123,9 @@ class SoftLabelPropagation(nn.Module):
 		W = D.unsqueeze(-2) * W * D.unsqueeze(-1)
 
 		return W
-
 	def update_prototype(self, transport, features, alpha):
 		new_proto = transport.permute(0, 2, 1).matmul(features).div(transport.sum(dim=1).unsqueeze(2))
 		self.proto = (1-alpha) * self.proto + alpha * new_proto
-
-	def generate_diagonal_block_matrix(self,n, k, num_blocks):
-		# 创建一个全0矩阵
-		matrix = torch.ones(n, n)
-
-		# 生成对角块
-		for i in range(num_blocks):
-			start_idx = i * k
-			end_idx = min((i + 1) * k, n)
-			matrix[start_idx:end_idx, start_idx:end_idx] = 1/k
-		matrix += torch.eye(n, n)*(k-1)/k
-
-		return matrix
-
 
 def compute_optimal_transport(M, n_lsamples, labels, epsilon=1e-6,class_balance=True):
 	# r : [runs, total samples], c : [runs, ways]
@@ -174,7 +150,6 @@ def compute_optimal_transport(M, n_lsamples, labels, epsilon=1e-6,class_balance=
 			break
 		iters = iters + 1
 	return P
-
 def keep_top_k_row(matrix, k):
 	batch_size, num_nodes, _ = matrix.shape
 	values, indices = torch.topk(matrix, k, dim=-1)

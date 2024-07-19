@@ -15,7 +15,6 @@ class Log:
 			with open(self.fname, 'a+') as f:
 				print(*info, file=f, flush=True, end=end)
 
-
 class PMarkdownTable:
 	def __init__(self, log, titles, rank=0):
 		if rank not in [-1, 0]: return
